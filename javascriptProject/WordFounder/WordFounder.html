@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Access Characters</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+    #character-display {
+      margin-top: 20px;
+      font-size: 24px;
+      font-weight: bold;
+      color: blue;
+    }
+    select {
+      font-size: 16px;
+      padding: 5px;
+      margin-top: 20px;
+    }
+    input {
+      font-size: 16px;
+      padding: 5px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Access Characters from Your Word</h1>
+  <p>Enter a word to create the dropdown:</p>
+  <input type="text" id="user-word" placeholder="Enter your word here" />
+  <button id="generate-button">Generate</button>
+  <br>
+  <select id="character-selector" style="display:none;">
+    <!-- Options will be dynamically populated -->
+  </select>
+  <div id="character-display">Character will appear here</div>
+
+  <script>
+    const generateButton = document.getElementById("generate-button");
+    const selector = document.getElementById("character-selector");
+    const display = document.getElementById("character-display");
+    const userWordInput = document.getElementById("user-word");
+
+    generateButton.addEventListener("click", () => {
+      const userWord = userWordInput.value; // Get user input
+
+      if (!userWord) {
+        display.textContent = "Please enter a word!";
+        selector.style.display = "none";
+        return;
+      }
+
+      selector.innerHTML = ""; // Clear any previous options
+      display.textContent = ""; // Clear previous display
+
+      // Populate the dropdown
+      for (let i = 0; i < userWord.length; i++) {
+        const option = document.createElement("option");
+        option.value = i;
+        option.textContent = `Position ${i + 1}`; // Display as 1-based index
+        selector.appendChild(option);
+      }
+
+      selector.style.display = "inline-block"; // Show the dropdown
+
+      // Add event listener to the dropdown
+      selector.addEventListener("change", (event) => {
+        const index = event.target.value; // Get the selected index
+        const character = userWord[index]; // Access the corresponding character
+        display.textContent = `Character: ${character}`; // Display it
+      });
+    });
+  </script>
+</body>
+</html>

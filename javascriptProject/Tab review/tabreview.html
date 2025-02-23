@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="tabreview.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+     integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+     crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="container neon-glow">
+        <div class="wrapper">
+            <nav>
+                <a href="#react" class="link react"><i class="fab fa-react"></i></a>
+                <a href="#react" class="link vue"><i class="fab fa-vuejs"></i></a>
+                <a href="#react" class="link angular"><i class="fab fa-angular"></i></a>
+            </nav>
+
+            <div class="info">
+                <div class="item active">
+                    <i class="big-icon"></i>
+                </div>
+            </div>
+        </div>
+       
+    </div>
+    
+
+    <script>
+        const tab1=document.querySelector('.react');
+        const tab2=document.querySelector('.vue');
+        const tab3=document.querySelector('.angular');
+        const item=document.querySelectorAll('.item');
+        const activ=document.querySelector('.active');
+        const icon=document.querySelector('.big-icon');
+        const body=document.body;
+
+        function setColors(tab,bgColor,iconClass,infoColor) {
+           body.style.backgroundColor=bgColor;  
+           icon.innerHTML=`<i class="${iconClass}"></i>`; 
+           
+           for(let i=0;i<item.length;i++) {
+            item[i].style.color=infoColor;
+        }}
+        tab1.addEventListener("click",()=>{
+        setColors(tab1,"#00d8ff","fab fa-react","#00d8ff");
+        tab1.classList.add("tabOne");
+        tab2.classList.remove("tabOne");
+        tab3.classList.remove("tabOne");
+    })
+        tab2.addEventListener("click",()=>{
+        setColors(tab2,"#42b883","fab fa-vuejs","#42b883");
+        tab2.classList.add("tabOne");
+        tab1.classList.remove("tabOne");
+        tab3.classList.remove("tabOne");
+    })
+
+    tab3.addEventListener("click",()=>{
+        setColors(tab3,"#b52e31","fab fa-angular","#b52e31");
+        tab3.classList.add("tabOne");
+        tab2.classList.remove("tabOne");
+        tab1.classList.remove("tabOne");
+    })
+    
+
+        setColors(tab1,"00d8ff","fab fa-react","00d8ff");
+        tab1.classList.add("tabOne");
+    </script>
+</body>
+</html>

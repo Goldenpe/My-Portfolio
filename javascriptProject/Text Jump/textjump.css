@@ -1,0 +1,51 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+   
+}
+body{
+   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(to right,#04d2f7,#f03fea);
+    flex-direction: column;
+
+}
+.letters{
+    perspective: 1000px;
+    font-family: cursive;
+    color: azure;
+}
+.letters span{
+    cursor: pointer;
+    line-height: 20px;
+    font-size: 10rem;
+    display: inline-block;
+    user-select: none;
+}
+.letters span.active{
+    animation: jump 2s ease-in;
+    transition: bottom left;
+    font-size: 13rem;
+    font-family: 'Courier New', Courier, monospace;
+
+}
+@keyframes jump {
+    0%{
+        transform: translate(0,0) rotate(180deg);
+
+    }
+    25%{
+        transform: scale(2) translate(0,-150px);
+    }
+    75%{
+        transform: scale(1.1,1.1) translate(0,200px);
+    }
+    100%{
+        transform: translate(0,0) rotate(360deg);
+
+    }
+}

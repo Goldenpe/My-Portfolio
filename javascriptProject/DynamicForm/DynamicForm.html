@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="dynamicForm.css">
+</head>
+<body>
+    <div class="container">
+        <label for="">User name:</label>
+        <input type="text" class="" id="txt1" onkeyup="doshow()">
+        <span id="relt1"></span><br>
+
+        <label for="">Length:</label>
+        <input type="text" id="txt2" oninput="docount()">
+        <span id="relt2">0</span><br>
+
+        <label for="">Serch Key words:</label>
+        <input type="text" class="chk" id="chk" onkeyup="docheck()">
+        <span id="relt3"></span><br>
+
+        <label for="">Serch Images:</label>
+        <input type="text" class="srh" id="inputtext">
+        <span id="relt3"></span><br>
+        <button id="srh" class="sub">Search</button>
+        <button id="sub" class="sub" onclick="dis()">Submit</button>
+    </div><br>
+    <div class="pic">
+        <img id="image" src=" " alt="">
+    </div>
+    <script>
+        let image=document.getElementById("image");
+       
+          document.getElementById("srh").addEventListener("click",()=>{
+        
+          let inputtext = document.getElementById("inputtext").value;
+          let cleanedInput = inputtext.trim().replace(/\s+/g, '').toLowerCase()+".jfif";
+          image.src="images/"+cleanedInput;
+          
+     });
+
+       
+       function doshow(){
+        let window = document.getElementById("txt1").value;
+        document.getElementById("relt1").innerText = window;
+       }
+       function docount() {
+        const length = document.getElementById("txt2").value.length;
+        document.getElementById("relt2").innerText = length;
+        }
+        let span = document.getElementById("relt3");
+        function docheck() {
+            let inputElement = document.getElementById("chk");
+            let chk = inputElement.value.length;
+
+            if (chk >= 10) { 
+                inputElement.style.border ="2px solid green";
+                span.innerText = "strong";
+                span.style.color = "green";
+
+            }
+            else if (chk >= 5 && chk <=10) {
+                inputElement.style.border ="2px solid yellow";
+                span.innerText = "Normal";
+                span.style.color = "yellow";
+            }
+            else if (chk >=1 && chk <=5){
+                inputElement.style.border ="2px solid red";
+                span.innerText = "Week";
+                span.style.color = "red";
+            }
+            else {
+                inputElement.style.border ="";
+                span.innerText = "";
+                span.style.color = "";
+            }
+            
+        }
+        function dis(){
+            const inputs = document.querySelectorAll('input');
+            inputs.forEach(input => input.disabled = true)
+        }
+
+    </script>
+</body>
+</html>

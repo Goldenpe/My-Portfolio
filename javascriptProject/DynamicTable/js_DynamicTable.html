@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input {height: 30px; width: 300px; margin: 5px;}
+        button {height: 30px; width: 310px; margin: 5px;}
+
+        table {border-collapse: separate; border-spacing: 10px;}
+        thead {background: teal; color: white; font-family: verdana; font-size: 15px;}
+        tbody {background: skyblue; color: black; font-family: calibri; font-size: 15px;}
+        tfoot {background: black; color: white; font-family: corbel; font-size: 15px;}
+        th,td {padding: 10px;}
+    </style>    
+</head>
+<body>
+    <input type="text" id="stdname" placeholder="Student Name" /><br />
+    <input type="text" id="stdage" placeholder="Student Age" /><br />
+    <input type="text" id="stdclass" placeholder="Student Class" /><br />
+    <button onclick="dosave()">Add Record</button>
+    <table>
+        <thead>
+            <tr>
+                <th>STD NAME</th><th>STD AGE</th><th>STD CLASS</th>
+            </tr>
+        </thead>
+        <tbody id="tbdy">
+
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>Total Records: </th><th><span id="tcount">0</span></th>
+            </tr>
+        </tfoot>
+    </table>
+    <script>
+        function dosave()
+        {
+            var stdname = document.getElementById("stdname").value;
+            var stdage = document.getElementById("stdage").value;
+            var stdclass = document.getElementById("stdclass").value;
+
+            // console.log(stdname + " " + stdage + " " + stdclass);
+            var tbody = document.getElementById("tbdy");
+
+            var row = document.createElement("tr");
+
+            var col1 = document.createElement("td");
+            col1.innerHTML = stdname;
+            var col2 = document.createElement("td");
+            col2.innerHTML = stdage;
+            var col3 = document.createElement("td");
+            col3.innerHTML = stdclass;
+
+            row.appendChild(col1);
+            row.appendChild(col2);
+            row.appendChild(col3);
+            
+
+            tbody.appendChild(row);
+
+            var count = tbody.rows.length;
+
+            document.getElementById("tcount").innerText = count;
+
+        }
+    </script>
+</body>
+</html>

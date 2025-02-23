@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="textjump.css">
+</head>
+<body>
+    
+
+    <div class="letters">
+        <span>K</span>
+        <span>A</span>
+        <span>M</span>
+        <span>A</span>
+        <span>L</span>
+    </div>
+    <p id="display">this is letter</p>
+
+    <script>
+        
+        let letters=document.querySelectorAll(".letters span");
+        let display=document.getElementById("display");
+        letters.forEach((letter)=>{
+            letter.addEventListener("click",(e)=>{
+                e.target.classList.add("active");
+
+                display.innerText="you have selected the letter is "+ e.target.innerText;
+                setTimeout(() => {
+                    e.target.classList.remove("active");
+                },2000); // 300ms delay matches the transition duration
+            });
+        });
+        
+        
+    </script>
+</body>
+</html>

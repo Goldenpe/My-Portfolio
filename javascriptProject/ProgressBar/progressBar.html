@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {padding: 0px; margin: 0px;}
+        .bar {height: 30px; width: 100%; border: 2px solid red;}
+        .fill {height: 30px; width: 1%; background: red;}
+        .status {text-align: center; font-family: arial black; color: red; }
+        .buttons{display: flex;justify-content: center; align-items: center;}
+        button {text-align: center; font-family: arial black; width: 120px;padding: 6px;
+            margin: 10px; background:linear-gradient(to bottom, rgb(232, 41, 222), rgb(63, 63, 118));
+            color: white; font-weight: bold;border: none; outline: none;box-shadow: 4px 4px 9px rgba(255, 255, 255, 0.2);
+            border-radius: 5px;transition: all 0.5s;
+        }
+        button:hover {transform: scale(1.1);}
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            
+        </nav>
+    </header>
+    <section>
+        <article>
+            <div class="bar">
+                <div class="fill" id="fill"></div>
+            </div>
+            <h2 class="status" id="status"></h2>
+            <div class="buttons">
+            <button class="str" id="str" onclick="start()">Start</button>
+            <button class="pause" id="pause" onclick="pause()">Pause</button>
+        </div>
+        </article>
+    </section>
+    <aside>
+
+    </aside>
+    <footer>
+
+    </footer>
+    <script>
+       
+        var item;
+        var counter = 1;
+        let text = document.getElementById("status");
+        let isPaused = true;
+        let fill=document.getElementById("fill");
+        var strt=document.getElementById("str");
+    
+        function doit() {
+                if (counter >= 100) {
+                    clearInterval(item);
+                    text.innerText = "Complete";
+                    fill.style.backgroundColor = "red"; // Use backgroundColor, not background
+                } else if (counter >= 70 && counter < 100) {
+                    text.innerText = "Almost there";
+                    fill.style.backgroundColor = "orange";
+                } else if (counter >= 30 && counter < 70) {
+                    text.innerText = "Be ready";
+                    fill.style.backgroundColor = "yellow";
+                } else if (counter >= 0 && counter < 30) {
+                    text.innerText = "In progress";
+                    fill.style.backgroundColor = "green";
+                }
+
+    
+            document.getElementById("fill").style.width = counter + "%";
+            console.log("Working", counter);
+            counter++;
+        }
+
+        function start() {
+                if (isPaused) { 
+                    item = setInterval(doit, 100);
+                    isPaused = false; 
+                }
+            }
+
+            function pause() {
+                clearInterval(item); 
+                isPaused = true; 
+            }
+
+    
+    </script>
+    
+</body>
+</html>

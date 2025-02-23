@@ -1,0 +1,26 @@
+.main{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #0b0423;
+    min-height: 100vh;
+}
+#box,#box2{
+    border: 2px dotted #fff;
+    width: 300px;
+    min-height: 400px;
+    margin: 20px;
+}
+
+.items{
+   
+  
+    height: 60px;
+    background-color: red;
+    margin: 30px;
+    display: flex;
+    align-items: center;
+    cursor: grab;
+
+} 

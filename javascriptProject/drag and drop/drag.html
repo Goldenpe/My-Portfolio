@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="drag.css">
+</head>
+<body>
+    <div class="main">
+        <div id="box">
+            <div class="items" draggable="true">Item1</div>
+            <div class="items" draggable="true">Item2</div>
+            <div class="items" draggable="true">Item3</div>
+            <div class="items" draggable="true">Item4</div>
+            
+
+        </div>
+        <div id="box2"></div>
+    </div>
+
+    
+    <script>
+        let lists = document.getElementsByClassName("items");
+        let leftbox = document.querySelector("#box"); // Selects the first element with class 'box'
+        let rightbox = document.querySelector("#box2"); // Selects the first element with class 'box2'
+    
+        if (leftbox && rightbox) { // Check if both elements exist
+            for (let list of lists) {
+                // Add the dragstart event to each item
+                list.addEventListener("dragstart", function (event) {
+                    let selected = event.target;
+    
+                    // Prevent default behavior to allow drop
+                    rightbox.addEventListener("dragover", function (event) {
+                        event.preventDefault();
+                    });
+    
+                    // Move the item to the right box on drop
+                    rightbox.addEventListener("drop", function (event) {
+                        rightbox.appendChild(selected);
+                        selected = null; // Clear the selected item
+                    });
+                    leftbox.addEventListener("dragover", function (event) {
+                        event.preventDefault();
+                    });
+    
+                    // Move the item to the right box on drop
+                    leftbox.addEventListener("drop", function (event) {
+                        leftbox.appendChild(selected);
+                        selected = null; // Clear the selected item
+                    });
+
+                });
+            }
+        } else {
+            console.error("Left box or right box element not found in the DOM.");
+        }
+    </script>
+    
+    
+</body>
+</html>
